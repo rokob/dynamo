@@ -69,11 +69,7 @@ defmodule Dynamo.Filters.ExceptionsTest do
 
   setup_all do
     :error_logger.tty(false)
-    :ok
-  end
-
-  teardown_all do
-    :error_logger.tty(true)
+    on_exit fn -> :error_logger.tty(true) end
     :ok
   end
 

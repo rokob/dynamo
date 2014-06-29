@@ -18,11 +18,7 @@ defmodule Dynamo.Cowboy.RouterTest do
 
   setup_all do
     Dynamo.Cowboy.run RouterApp, port: 8012, verbose: false
-    :ok
-  end
-
-  teardown_all do
-    Dynamo.Cowboy.shutdown RouterApp
+    on_exit fn -> Dynamo.Cowboy.shutdown RouterApp end
     :ok
   end
 

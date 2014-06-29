@@ -6,11 +6,7 @@ defmodule Dynamo.Filters.Session.ETSStoreTest do
 
   setup do
     :ets.new(:dynamo_session_store, [:set, :public, :named_table])
-    :ok
-  end
-
-  teardown do
-    :ets.delete(:dynamo_session_store)
+    on_exit fn -> :ets.delete(:dynamo_session_store) end
     :ok
   end
 

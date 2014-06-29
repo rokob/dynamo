@@ -38,11 +38,7 @@ defmodule Dynamo.HTTP.RenderTest do
   setup_all do
     RenderingApp.start_link
     Dynamo.under_test(RenderingApp)
-    :ok
-  end
-
-  teardown_all do
-    Dynamo.under_test(nil)
+    on_exit fn -> Dynamo.under_test(nil) end
     :ok
   end
 

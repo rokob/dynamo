@@ -21,11 +21,7 @@ defmodule Dynamo.Filters.StaticTest do
 
   setup_all do
     Dynamo.under_test(StaticApp)
-    :ok
-  end
-
-  teardown_all do
-    Dynamo.under_test(nil)
+    on_exit fn -> Dynamo.under_test(nil) end
     :ok
   end
 

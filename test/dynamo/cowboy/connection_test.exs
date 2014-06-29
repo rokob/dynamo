@@ -3,11 +3,7 @@ defmodule Dynamo.Cowboy.ConnectionTest do
 
   setup_all do
     Dynamo.Cowboy.run __MODULE__, port: 8011, verbose: false
-    :ok
-  end
-
-  teardown_all do
-    Dynamo.Cowboy.shutdown __MODULE__
+    on_exit fn -> Dynamo.Cowboy.shutdown __MODULE__ end
     :ok
   end
 

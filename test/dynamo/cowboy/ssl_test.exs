@@ -36,11 +36,7 @@ defmodule Dynamo.Cowboy.SSLTest do
 
   setup_all do
     App.run(verbose: false)
-    :ok
-  end
-
-  teardown_all do
-    Dynamo.Cowboy.shutdown App
+    on_exit fn -> Dynamo.Cowboy.shutdown App end
     :ok
   end
 
